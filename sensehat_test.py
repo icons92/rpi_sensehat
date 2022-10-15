@@ -3,6 +3,7 @@ import time
 
 s = SenseHat()
 s.low_light = True
+s.set_rotation(180)
 
 green = (0, 255, 0)
 red = (255, 0, 0)
@@ -63,5 +64,6 @@ while True:
     s.set_pixels(images[count % len(images)]())
     time.sleep(.75)
     count += 1
-    if count > 10:
-        break
+    if count > 11:
+        s.clear()
+	break
