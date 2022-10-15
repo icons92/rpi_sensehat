@@ -1,4 +1,3 @@
-from ctypes import c_int
 from sense_hat import SenseHat
 import time
 import datetime
@@ -12,12 +11,12 @@ s_speed = 0.1
 index = 0
 visual = ['time', 'date']
 
-red = (255,0,0)
-green = (0,255,0)
-blue = (0,0,255)
+red = [255,0,0]
+green = [0,255,0]
+blue = [0,0,255]
 
 c_index = 0
-color_index = [red, green, blue]
+color = [red, green, blue]
 
 def update_screen(m, c):
 	if m == 'time':
@@ -47,12 +46,12 @@ try:
 					selection = True	
 				if selection:
 					current_mode = visual[index % 2]
-					color_selected = color_index[c_index % 3]
+					color_selected = color[c_index % 3]
 					update_screen(current_mode, color_selected)
 		
 		if not selection:      
 			current_mode = visual[index % 2]
-			color_selected = color_index[c_index % 3]
+			color_selected = color[c_index % 3]
 			update_screen(current_mode, color_selected)
 	
 	
