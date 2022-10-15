@@ -1,3 +1,4 @@
+from ctypes import c_int
 from sense_hat import SenseHat
 import time
 import datetime
@@ -5,18 +6,26 @@ import datetime
 s = SenseHat()
 x = 0
 s.set_rotation(180)
-s_speed = 0.05
+s.low_light = True
+s_speed = 0.1
 
 index = 0
 visual = ['time', 'date']
 
-def update_screen(m):
+red = [255,0,0]
+green = [0,255,0]
+blue = [0,0,255]
+
+c_index = 0
+color_index = [red, green, blue]
+
+def update_screen(m, c):
 	if m == 'time':
 		now = datetime.datetime.now()
-		s.show_message(now.strftime('%I:%M %p'), scroll_speed=s_speed, text_colour = [255,0,0])
+		s.show_message(now.strftime('%I:%M %p'), scroll_speed=s_speed, text_colour = c)
 	elif m == 'date':
 		now = datetime.datetime.now()
-		s.show_message(now.strftime('%x'), scroll_speed=s_speed, text_colour = [0,255,0])
+		s.show_message(now.strftime('%x'), scroll_speed=s_speed, text_colour = c)
 
 
 
@@ -33,13 +42,18 @@ try:
 				elif event.direction == "right":
 					index += 1
 					selection = True
+				elif event.direction == "middle":
+					index += 1
+					selection = True	
 				if selection:
 					current_mode = visual[index % 2]
-					update_screen(current_mode)
+					color_selected = color_index[c_index % 3]
+					update_screen(current_mode, color_selected)
 		
 		if not selection:      
 			current_mode = visual[index % 2]
-			update_screen(current_mode)
+			color_selected = color_index[c_index % 3]
+			update_screen(current_mode, color_selected)
 	
 	
 
