@@ -64,8 +64,9 @@ while True:
     s.set_pixels(images[count % len(images)]())
     time.sleep(.75)
     count += 1
+    
     if count > 11:
         s.show_message('You have reached the end!', text_colour = [255,0,0])
-	time.sleep(.75)
-	s.clear()
-	break
+        time.sleep(.75)
+        s.clear()
+        break
