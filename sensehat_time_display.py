@@ -5,7 +5,7 @@ import datetime
 s = SenseHat()
 x = 0
 s.set_rotation(180)
-
+s_speed = 0.05
 
 index = 0
 visual = ['time', 'date']
@@ -13,10 +13,10 @@ visual = ['time', 'date']
 def update_screen(m):
 	if m == 'time':
 		now = datetime.datetime.now()
-		s.show_message(now.strftime('%I:%M %p'), text_colour = [255,0,0])
+		s.show_message(now.strftime('%I:%M %p'), scroll_speed=s_speed, text_colour = [255,0,0])
 	elif m == 'date':
 		now = datetime.datetime.now()
-		s.show_message(now.strftime('%x'), text_colour = [0,255,0])
+		s.show_message(now.strftime('%x'), scroll_speed=s_speed, text_colour = [0,255,0])
 
 
 
