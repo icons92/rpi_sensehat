@@ -1,4 +1,3 @@
-from curses import KEY_A1
 import numpy as np
 from sense_hat import SenseHat
 
