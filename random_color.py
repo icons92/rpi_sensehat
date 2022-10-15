@@ -10,11 +10,12 @@ s.set_rotation(180)
 try:
     while True:
         logo = []
-        for i in range(0,63):
-            print(i)
+        for i in range(0,64):
+            
             logo.append(list(np.random.choice(range(256), size=3)))
 
-        s.set_pixel(logo)
+        print(logo)
+        s.set_pixels(logo)
         time.sleep(1)
         logo.clear()
     
