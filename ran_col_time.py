@@ -13,8 +13,9 @@ my_c = []
 try:
     while True:
         
-        my_c.append(list(np.random.choice(range(256), size=3)))
+        my_c = list(np.random.choice(range(256), size=3))
         now = datetime.datetime.now()
+        print(my_c)
         s.show_message(now.strftime('%I:%M %p'), scroll_speed=s_speed, text_colour = my_c)
         my_c.clear()
 	
