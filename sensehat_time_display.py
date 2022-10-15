@@ -12,9 +12,9 @@ s_speed = 0.1
 index = 0
 visual = ['time', 'date']
 
-red = [255,0,0]
-green = [0,255,0]
-blue = [0,0,255]
+red = (255,0,0)
+green = (0,255,0)
+blue = (0,0,255)
 
 c_index = 0
 color_index = [red, green, blue]
@@ -43,7 +43,7 @@ try:
 					index += 1
 					selection = True
 				elif event.direction == "middle":
-					index += 1
+					c_index += 1
 					selection = True	
 				if selection:
 					current_mode = visual[index % 2]
