@@ -11,7 +11,7 @@ try:
     logo = []
     for i in range(0,64):
            
-        logo.insert(list(0,0,0))
+        logo.insert(0,list([0,0,0]))
 
     while True:
        
@@ -19,7 +19,7 @@ try:
         s.set_pixels(logo)
         time.sleep(1)
         logo.pop()
-        logo.insert(list(np.random.choice(range(256), size=3)))
+        logo.insert(0,list(np.random.choice(range(256), size=3)))
     
 except KeyboardInterrupt:
    	
