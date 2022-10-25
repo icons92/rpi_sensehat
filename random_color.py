@@ -7,16 +7,19 @@ s = SenseHat()
 s.set_rotation(180)
 
 try:
-    while True:
-        logo = []
-        for i in range(0,64):
-            
-            logo.append(list(np.random.choice(range(256), size=3)))
+    
+    logo = []
+    for i in range(0,64):
+           
+        logo.insert(list(0,0,0))
 
+    while True:
+       
         print(logo)
         s.set_pixels(logo)
         time.sleep(1)
-        logo.clear()
+        logo.pop()
+        logo.insert(list(np.random.choice(range(256), size=3)))
     
 except KeyboardInterrupt:
    	
