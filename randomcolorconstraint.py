@@ -1,4 +1,4 @@
-import numpy as np
+from random import randrange
 from sense_hat import SenseHat
 
 import time
@@ -8,25 +8,25 @@ s.set_rotation(180)
 
 def red():
     #pick a red color
-    r = np.random.choice(range(256), size=1)
-    return list([r,0,0])
+    r = randrange(256)
+    return [r,0,0]
 def blue():
     #pick a blue color
-    b = np.random.choice(range(256), size=1)
-    return list([0,b,0])
+    b = randrange(256)
+    return [0,b,0]
 def green():
     #pick a green color
-    g = np.random.choice(range(256), size=1)
-    return list([0,0,g])
+    g = randrange(256)
+    return [0,0,g]
 
-colors = [red(), blue(), green()]
+colors = [red, blue, green]
 
 try:
     
     logo = []
     for i in range(0,64):
            
-        logo.append(np.random.choice(colors, 1))
+        logo.append(colors[randrange(2)]())
 
     while True:
        
@@ -34,7 +34,7 @@ try:
         s.set_pixels(logo)
         time.sleep(1)
         logo.pop()
-        logo.insert(0, np.random.choice(colors, 1))
+        logo.insert(0, colors[randrange(2)]())
     
 except KeyboardInterrupt:
    	
