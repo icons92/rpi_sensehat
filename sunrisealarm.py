@@ -18,10 +18,10 @@ try:
            
         sunrise.append([255,205,93])
 
-    while True:
-	
-	print(sunrise)
-	time.sleep(10)
+    while True:	
+	    
+        print(sunrise)
+        time.sleep(10)
         now = datetime.now().strftime('%I:%M%p')
 
         if now == alarm:
