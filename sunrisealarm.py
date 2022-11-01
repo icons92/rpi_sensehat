@@ -7,7 +7,7 @@ import time
 s = SenseHat()
 s.set_rotation(180)
 
- alarm = datetime.strptime("11:40AM", '%I:%M%p').strftime('%I:%M%p')
+alarm = datetime.strptime("11:45AM", '%I:%M%p').strftime('%I:%M%p')
 
 try:
     
@@ -18,17 +18,17 @@ try:
 
     while True: 
 
-        time.sleep(.5)       
+        time.sleep(10)       
         now = datetime.now().strftime('%I:%M%p')
 
         if now == alarm:         
             s.set_pixels(sunrise)
         elif now > alarm:
             print('now is greater')
-            print(f'{now} > {alarm}')
+            print('{} > {}'.format(now, alarm))
         elif now < alarm:
             print('now is less than alarm')
-            print(f'{now} < {alarm}')
+            print('{} < {}'.format(now, alarm))
         
         
     

@@ -13,11 +13,11 @@ def red():
 def blue():
     #pick a blue color
     b = randrange(256)
-    return [0,b,0]
+    return [0,0,b]
 def green():
     #pick a green color
     g = randrange(256)
-    return [0,0,g]
+    return [0,g,0]
 
 colors = [red, blue, green]
 
@@ -26,15 +26,15 @@ try:
     logo = []
     for i in range(0,64):
            
-        logo.append(colors[randrange(2)]())
+        logo.append(colors[randrange(3)]())
 
     while True:
        
-        print(logo)
+        #print(logo)
         s.set_pixels(logo)
-        time.sleep(1)
+        time.sleep(.5)
         logo.pop()
-        logo.insert(0, colors[randrange(2)]())
+        logo.insert(0, colors[randrange(3)]())
     
 except KeyboardInterrupt:
    	
