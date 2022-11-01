@@ -26,8 +26,9 @@ try:
         now = datetime.now().strftime('%I:%M%p')
 
         if now == alarm:
-            a_trigger = True         
+            a_trigger = True
             s.set_pixels(sunrise)
+            time.sleep(1)
         elif now > alarm:            
             pass
         elif now < alarm:            
