@@ -6,7 +6,7 @@ import time
 
 s = SenseHat()
 s.set_rotation(180)
-t_in = input('Time as HH:MMPM')
+t_in = input('Time as HH:MMPM\n')
 
 alarm = datetime.strptime(t_in, '%I:%M%p').strftime('%I:%M%p')
 a_trigger = False
@@ -35,7 +35,7 @@ try:
             pass
 
         if a_trigger:
-            s.show_message(now, text_colour= black, back_colour= sunrise)
+            s.show_message(now)
         
         
     
