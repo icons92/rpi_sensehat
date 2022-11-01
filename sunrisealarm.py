@@ -6,17 +6,18 @@ import time
 
 s = SenseHat()
 s.set_rotation(180)
+t_in = input('Time as HH:MMPM')
 
-alarm = datetime.strptime("12:13PM", '%I:%M%p').strftime('%I:%M%p')
+alarm = datetime.strptime(t_in, '%I:%M%p').strftime('%I:%M%p')
 a_trigger = False
 black = [0,0,0]
 
-try:
-    
-    sunrise = []
-    for i in range(0,64):
+sunrise = []
+for i in range(0,64):
            
-        sunrise.append([255,205,93])
+    sunrise.append([255,205,93])
+
+try:   
 
     while True:	
 	    
