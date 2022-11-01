@@ -10,15 +10,13 @@ t_in = input('Time as HH:MMPM\n')
 
 alarm = datetime.strptime(t_in, '%I:%M%p').strftime('%I:%M%p')
 a_trigger = False
-black = []
-black.append(0)
-black.append(0)
-black.append(0)
+black = [0,0,0]
+color = [255,205,93]
 
 sunrise = []
 for i in range(0,64):
            
-    sunrise.append([255,205,93])
+    sunrise.append(color)
 
 try:   
 
