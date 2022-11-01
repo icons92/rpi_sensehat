@@ -21,21 +21,19 @@ try:
 
     while True:	
 	    
-        print(sunrise)
-        time.sleep(10)
+        
+        time.sleep(1)
         now = datetime.now().strftime('%I:%M%p')
 
         if now == alarm:
-            a_trigger = True
-            s.set_pixels(sunrise)
-            time.sleep(1)
+            a_trigger = True            
         elif now > alarm:            
             pass
         elif now < alarm:            
             pass
 
         if a_trigger:
-            s.show_message(now)
+            s.show_message(now, text_colour=black, back_colour=sunrise)
         
         
     
