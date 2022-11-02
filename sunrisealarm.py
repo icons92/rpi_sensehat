@@ -19,23 +19,27 @@ try:
     while True:	
 	            
         time.sleep(1)
-        now = datetime.now().strftime('%I:%M%p')
-        
-        if not a_trigger:
-            s.show_message(now, text_colour=[50,0,0])
+        now = datetime.now().strftime('%I:%M%p')            
 
         if now == alarm:
             a_trigger = True            
         
+        if not a_trigger:
+            s.show_message(now, text_colour=[50,0,0])
+
         if a_trigger:
             s.show_message(now, text_colour=black, back_colour=color)
         
         for event in s.stick.get_events():
             if event.action != "released":
-                print('Snooze Unitl Next Day')
-                a_trigger = False
-                s.clear()
-                
+                if event.direction == "left":
+                    print('Snooze Unitl Next Day')
+                    a_trigger = False
+                    s.clear()
+                elif event.direction == "right":
+                        print('Turned off alarm program')
+                        s.clear()
+                        quit()
     
 except KeyboardInterrupt:
    	
