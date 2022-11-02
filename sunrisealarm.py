@@ -20,7 +20,9 @@ try:
 	            
         time.sleep(1)
         now = datetime.now().strftime('%I:%M%p')
-        s.show_message(now, text_colour=[125,0,0])
+        
+        if not a_trigger:
+            s.show_message(now, text_colour=[50,0,0])
 
         if now == alarm:
             a_trigger = True            
