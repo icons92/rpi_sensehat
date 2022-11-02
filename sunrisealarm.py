@@ -28,7 +28,9 @@ try:
             s.show_message(now, text_colour=black, back_colour=color)
         
         for event in s.stick.get_events():
-            print('event happened')
+            if event.action != "released":
+                print('event happened')
+                quit()
     
 except KeyboardInterrupt:
    	
