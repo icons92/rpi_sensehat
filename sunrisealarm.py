@@ -20,6 +20,7 @@ try:
 	            
         time.sleep(1)
         now = datetime.now().strftime('%I:%M%p')
+        s.show_message(now, text_colour=[125,0,0])
 
         if now == alarm:
             a_trigger = True            
@@ -29,9 +30,10 @@ try:
         
         for event in s.stick.get_events():
             if event.action != "released":
-                print('event happened')
+                print('Snooze Unitl Next Day')
+                a_trigger = False
                 s.clear()
-                quit()
+                
     
 except KeyboardInterrupt:
    	
