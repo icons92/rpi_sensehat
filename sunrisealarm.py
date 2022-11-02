@@ -30,6 +30,7 @@ try:
         for event in s.stick.get_events():
             if event.action != "released":
                 print('event happened')
+                s.clear()
                 quit()
     
 except KeyboardInterrupt:
