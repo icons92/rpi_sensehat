@@ -13,30 +13,22 @@ a_trigger = False
 black = [0,0,0]
 color = [255,205,93]
 
-sunrise = []
-for i in range(0,64):
-           
-    sunrise.append(color)
 
 try:   
 
     while True:	
-	    
-        
+	            
         time.sleep(1)
         now = datetime.now().strftime('%I:%M%p')
 
         if now == alarm:
             a_trigger = True            
-        elif now > alarm:            
-            pass
-        elif now < alarm:            
-            pass
-
+        
         if a_trigger:
-            s.show_message(now, text_colour=black, back_colour=sunrise)
+            s.show_message(now, text_colour=black, back_colour=color)
         
-        
+        for event in s.stick.get_events():
+            print('event happened')
     
 except KeyboardInterrupt:
    	
