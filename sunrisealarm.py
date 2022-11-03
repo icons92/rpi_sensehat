@@ -24,8 +24,10 @@ try:
         if now == alarm:
             a_trigger = True            
         
+        '''
         if not a_trigger:
             s.show_message(now, text_colour=[50,0,0])
+        '''
 
         if a_trigger:
             s.show_message(now, text_colour=black, back_colour=color)
