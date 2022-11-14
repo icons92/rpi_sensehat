@@ -30,7 +30,7 @@ def move(direction):
     global playerl
     #take stick input and move player
     if direction == 'left':
-        for x, y in playerl:
+        for (x,y) in playerl:
             if x > 0:                
                 s.set_pixel(x-1,y,pcolor)
                 s.set_pixel(x,y,0,0,0)
@@ -38,7 +38,7 @@ def move(direction):
                 gcheck()
         
     elif direction == 'right':
-        for x, y in playerl:
+        for (x,y) in playerl:
             if x > 6:                
                 s.set_pixel(x+1, y, pcolor)
                 s.set_pixel(x,y,0,0,0)
@@ -46,7 +46,7 @@ def move(direction):
                 gcheck()
         
     elif direction == 'up':
-        for x, y in playerl:
+        for (x,y) in playerl:
             if y > 0:                
                 s.set_pixel(x, y-1, pcolor)
                 s.set_pixel(x, y, 0,0,0)
@@ -54,7 +54,7 @@ def move(direction):
                 gcheck()
         
     elif direction == 'down':
-        for x, y in playerl:
+        for (x,y) in playerl:
             if y > 6:                
                 s.set_pixel(x,y+1,pcolor)
                 s.set_pixel(x,y,0,0,0)
