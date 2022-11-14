@@ -1,97 +1,72 @@
 from sense_hat import SenseHat
-import time
 from random import randrange
 
 s = SenseHat()
-playerl = None
-targetl = None
-tcolor = None
-pcolor = None
+
+class Player():
+    def __init__(self, x, y, color) -> None:
+        self.x = x
+        self.y = y
+        self.color = color
     
+    def moveplayer(self, direction):
+        #take stick input and move player
+        if direction == 'left':
+            if self.x > 0:
+                self.x -= 1
+        elif direction == 'right':
+            if self.x > 6:
+                self.x += 1
+        elif direction == 'up':
+            if self.y > 0:
+                self.y -= 1
+        elif direction == 'down':
+            if self.y > 6:
+                self.y += 1
 
-def target():
-    global targetl
-    #randomly place a target location with a random color
-    tcolor = [randrange(50,256),randrange(50,256),randrange(50,256)]
-    x = randrange(7)
-    y = randrange(7)    
-    s.set_pixel(x,y,tcolor)
-    targetl = tuple((x,y))
+
+class Target():
+    def __init__(self) -> None:
+        self.x = randrange(7)
+        self.y = randrange(7)
+        self.color = [randrange(50,256),randrange(50,256),randrange(50,256)]
 
 
-def gcheck():
-    global targetl
-    global playerl
-    if playerl == targetl:
-        s.set_pixel(playerl[0], playerl[1], tcolor)
-        target()
+def updatepixel(obj):
+    s.set_pixel(obj.x, obj.y, obj.color)
 
-def move(direction):
-    global playerl
-    #take stick input and move player
-    if direction == 'left':
-        for (x,y) in playerl:
-            if x > 0:                
-                s.set_pixel(x-1,y,pcolor)
-                s.set_pixel(x,y,0,0,0)
-                playerl = tuple((x-1, y))
-                gcheck()
-        
-    elif direction == 'right':
-        for (x,y) in playerl:
-            if x > 6:                
-                s.set_pixel(x+1, y, pcolor)
-                s.set_pixel(x,y,0,0,0)
-                playerl = tuple((x+1, y))
-                gcheck()
-        
-    elif direction == 'up':
-        for (x,y) in playerl:
-            if y > 0:                
-                s.set_pixel(x, y-1, pcolor)
-                s.set_pixel(x, y, 0,0,0)
-                playerl = tuple((x, y-1))
-                gcheck()
-        
-    elif direction == 'down':
-        for (x,y) in playerl:
-            if y > 6:                
-                s.set_pixel(x,y+1,pcolor)
-                s.set_pixel(x,y,0,0,0)
-                playerl = tuple((x, y+1))
-                gcheck()
-
-def start():
-    global playerl
-    #create starting state for the game
-    s.clear()
-    s.set_pixel(3,3,255,255,255)
-    target()
-    playerl = tuple((3,3))
 
 if __name__ == '__main__':
-
-    #run main
-    start()    
+    
+    s.clear
+    player = Player(3,3,[255,255,255])
+    updatepixel(player)
+       
+    target = Target()
+    updatepixel(target)
 
     try:
-        while True:            
+        while True:
             events = s.stick.get_events()
             for event in events:
                 # Skip releases
                 if event.action != "released":
                     if event.direction == "left":
-                        move('left')
-                        print('left')
+                        updatepixel(player)
+                        player.moveplayer('left')
+                        updatepixel(player)
                     elif event.direction == "right":
-                        move('right')
-                        print('right')
+                        updatepixel(player)
+                        player.moveplayer('right')
+                        updatepixel(player)
                     elif event.direction == "up":
-                        move('up')
-                        print('up')
+                        updatepixel(player)
+                        player.moveplayer('up')
+                        updatepixel(player)
                     elif event.direction == "down":
-                        move('down')
-                        print('down')
+                        updatepixel(player)
+                        player.moveplayer('down')
+                        updatepixel(player)
 
     except KeyboardInterrupt:
         s.clear()
