@@ -93,7 +93,7 @@ if __name__ == '__main__':
                         goal(target, player)
                     elif event.direction == "middle":
                         s.set_rotation(180)
-                        message = 'Good game you scored' + str(player.score) + 'points!'
+                        message = 'Good game you scored ' + str(player.score) + ' points!'
                         s.show_message(message)
                         s.clear()
                         quit()
