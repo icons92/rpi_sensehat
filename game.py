@@ -40,12 +40,12 @@ class Target():
 def updatepixel(obj):
     s.set_pixel(obj.x, obj.y, obj.color)
 
-def goal():
-    if target.x == player.x and target.y == player.y:        
-        target.x = randrange(7)
-        target.y = randrange(7)
-        target.color = [randrange(50,256),randrange(50,256),randrange(50,256)]
-        player.score += 1        
+def goal(tobj, pobj):
+    if tobj.x == pobj.x and tobj.y == pobj.y:        
+        tobj.x = randrange(7)
+        tobj.y = randrange(7)
+        tobj.color = [randrange(50,256),randrange(50,256),randrange(50,256)]
+        pobj.score += 1        
 
 
 if __name__ == '__main__':
@@ -70,24 +70,24 @@ if __name__ == '__main__':
                         updatepixel(player)
                         player.moveplayer('left')
                         updatepixel(player)
-                        goal()
+                        goal(target, player)
                     elif event.direction == "right":
                         updatepixel(player)
                         player.moveplayer('right')
                         updatepixel(player)
-                        goal()
+                        goal(target, player)
                     elif event.direction == "up":
                         updatepixel(player)
                         player.moveplayer('up')
                         updatepixel(player)
-                        goal()
+                        goal(target, player)
                     elif event.direction == "down":
                         updatepixel(player)
                         player.moveplayer('down')
                         updatepixel(player)
-                        goal()
+                        goal(target, player)
                     elif event.direction == "middle":
-                        message = 'Good game you scored' + player.score + 'points!'
+                        message = 'Good game you scored' + str(player.score) + 'points!'
                         s.show_message(message)
                         s.clear()
                         quit()
