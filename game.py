@@ -14,15 +14,19 @@ class Player():
         if direction == 'left':
             if self.x > 0:
                 self.x -= 1
+                self.color = [255,255,255]
         elif direction == 'right':
-            if self.x > 6:
+            if self.x < 6:
                 self.x += 1
+                self.color = [255,255,255]
         elif direction == 'up':
             if self.y > 0:
                 self.y -= 1
+                self.color = [255,255,255]
         elif direction == 'down':
-            if self.y > 6:
+            if self.y < 6:
                 self.y += 1
+                self.color = [255,255,255]
 
 
 class Target():
@@ -49,6 +53,7 @@ if __name__ == '__main__':
         while True:
             events = s.stick.get_events()
             for event in events:
+                player.color = [0,0,0]
                 # Skip releases
                 if event.action != "released":
                     if event.direction == "left":
