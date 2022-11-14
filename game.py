@@ -20,11 +20,14 @@ def target():
 
 
 def gcheck():
+    global targetl
+    global playerl
     if playerl == targetl:
         s.set_pixel(playerl[0], playerl[1], tcolor)
         target()
 
 def move(direction):
+    global playerl
     #take stick input and move player
     if direction == 'left':
         for x, y in playerl:
