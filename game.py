@@ -8,7 +8,8 @@ class Player():
         self.x = x
         self.y = y
         self.color = color
-    
+        self.score = 0
+
     def moveplayer(self, direction):
         #take stick input and move player
         if direction == 'left':
@@ -39,10 +40,19 @@ class Target():
 def updatepixel(obj):
     s.set_pixel(obj.x, obj.y, obj.color)
 
+def goal():
+    if target.x == player.x and target.y == player.y:        
+        target.x = randrange(7)
+        target.y = randrange(7)
+        target.color = [randrange(50,256),randrange(50,256),randrange(50,256)]
+        player.score += 1        
+
 
 if __name__ == '__main__':
     
     s.clear
+    
+
     player = Player(3,3,[255,255,255])
     updatepixel(player)
        
@@ -60,18 +70,27 @@ if __name__ == '__main__':
                         updatepixel(player)
                         player.moveplayer('left')
                         updatepixel(player)
+                        goal()
                     elif event.direction == "right":
                         updatepixel(player)
                         player.moveplayer('right')
                         updatepixel(player)
+                        goal()
                     elif event.direction == "up":
                         updatepixel(player)
                         player.moveplayer('up')
                         updatepixel(player)
+                        goal()
                     elif event.direction == "down":
                         updatepixel(player)
                         player.moveplayer('down')
                         updatepixel(player)
+                        goal()
+                    elif event.direction == "middle":
+                        s.show_message(f'Good game you scored {player.score} points!')
+                        s.clear()
+                        quit()
+                        
 
     except KeyboardInterrupt:
         s.clear()
