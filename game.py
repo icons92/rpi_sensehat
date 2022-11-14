@@ -10,6 +10,7 @@ pcolor = None
     
 
 def target():
+    global targetl
     #randomly place a target location with a random color
     tcolor = [randrange(50,256),randrange(50,256),randrange(50,256)]
     x = randrange(7)
@@ -58,11 +59,12 @@ def move(direction):
                 gcheck()
 
 def start():
+    global playerl
     #create starting state for the game
     s.clear()
     s.set_pixel(3,3,255,255,255)
     target()
-    playerl = (3,3)
+    playerl = (3,3)  
 
 if __name__ == '__main__':
 
