@@ -16,7 +16,7 @@ def target():
     x = randrange(7)
     y = randrange(7)    
     s.set_pixel(x,y,tcolor)
-    targetl = (x,y)    
+    targetl = tuple((x,y))
 
 
 def gcheck():
@@ -34,7 +34,7 @@ def move(direction):
             if x > 0:                
                 s.set_pixel(x-1,y,pcolor)
                 s.set_pixel(x,y,0,0,0)
-                playerl = (x-1, y)
+                playerl = tuple((x-1, y))
                 gcheck()
         
     elif direction == 'right':
@@ -42,7 +42,7 @@ def move(direction):
             if x > 6:                
                 s.set_pixel(x+1, y, pcolor)
                 s.set_pixel(x,y,0,0,0)
-                playerl = (x+1, y)
+                playerl = tuple((x+1, y))
                 gcheck()
         
     elif direction == 'up':
@@ -50,7 +50,7 @@ def move(direction):
             if y > 0:                
                 s.set_pixel(x, y-1, pcolor)
                 s.set_pixel(x, y, 0,0,0)
-                playerl = (x, y-1)
+                playerl = tuple((x, y-1))
                 gcheck()
         
     elif direction == 'down':
@@ -58,7 +58,7 @@ def move(direction):
             if y > 6:                
                 s.set_pixel(x,y+1,pcolor)
                 s.set_pixel(x,y,0,0,0)
-                playerl = (x+1, y)
+                playerl = tuple((x, y+1))
                 gcheck()
 
 def start():
@@ -67,7 +67,7 @@ def start():
     s.clear()
     s.set_pixel(3,3,255,255,255)
     target()
-    playerl = (3,3)  
+    playerl = tuple((3,3))
 
 if __name__ == '__main__':
 
