@@ -12,15 +12,13 @@ class Player():
 
     def moveplayer(self, direction):
         #take stick input and move player
-        self.color = [255,255,255]
-        print(direction)
-        print(self.x, self.y)
+        self.color = [255,255,255]        
         if direction == 'left':
             if self.x > 0:
                 self.x -= 1
                 
         elif direction == 'right':
-            if self.x < 6:
+            if self.x < 7:
                 self.x += 1
                 
         elif direction == 'up':
@@ -28,7 +26,7 @@ class Player():
                 self.y -= 1
                 
         elif direction == 'down':
-            if self.y < 6:
+            if self.y < 7:
                 self.y += 1
                 
 
@@ -39,15 +37,19 @@ class Target():
         self.y = randrange(7)
         self.color = [randrange(50,256),randrange(50,256),randrange(50,256)]
 
+    def ntarget(self):
+        self.x = randrange(7)
+        self.y = randrange(7)
+        self.color = [randrange(50,256),randrange(50,256),randrange(50,256)]
+
 
 def updatepixel(obj):
     s.set_pixel(obj.x, obj.y, obj.color)
 
 def goal(tobj, pobj):
     if tobj.x == pobj.x and tobj.y == pobj.y:        
-        tobj.x = randrange(7)
-        tobj.y = randrange(7)
-        tobj.color = [randrange(50,256),randrange(50,256),randrange(50,256)]
+        tobj.ntarget()
+        updatepixel(tobj)
         pobj.score += 1        
 
 
