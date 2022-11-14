@@ -87,7 +87,8 @@ if __name__ == '__main__':
                         updatepixel(player)
                         goal()
                     elif event.direction == "middle":
-                        s.show_message('Good game you scored {} points!', player.score)
+                        message = 'Good game you scored' + player.score + 'points!'
+                        s.show_message(message)
                         s.clear()
                         quit()
                         
