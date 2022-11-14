@@ -13,6 +13,7 @@ class Player():
     def moveplayer(self, direction):
         #take stick input and move player
         self.color = [255,255,255]
+        print(direction)
         if direction == 'left':
             if self.x > 0:
                 self.x -= 1
