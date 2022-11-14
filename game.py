@@ -12,22 +12,23 @@ class Player():
 
     def moveplayer(self, direction):
         #take stick input and move player
+        self.color = [255,255,255]
         if direction == 'left':
             if self.x > 0:
                 self.x -= 1
-                self.color = [255,255,255]
+                
         elif direction == 'right':
             if self.x < 6:
                 self.x += 1
-                self.color = [255,255,255]
+                
         elif direction == 'up':
             if self.y > 0:
                 self.y -= 1
-                self.color = [255,255,255]
+                
         elif direction == 'down':
             if self.y < 6:
                 self.y += 1
-                self.color = [255,255,255]
+                
 
 
 class Target():
@@ -87,6 +88,7 @@ if __name__ == '__main__':
                         updatepixel(player)
                         goal(target, player)
                     elif event.direction == "middle":
+                        s.set_rotation(180)
                         message = 'Good game you scored' + str(player.score) + 'points!'
                         s.show_message(message)
                         s.clear()
